@@ -1,9 +1,16 @@
 package models;
 
+
 public class User {
     private String password;
 
     private String userName;
+
+    public User(){}
+    public User(String password, String userName){
+        this.setPassword(password);
+        this.setUserName(userName);
+    }
 
     public String getUserName() {
         return userName;
