@@ -1,6 +1,6 @@
 package models;
 
-public class Provider {
+public class Provider implements Business{
     private String name;
 
     private int id;

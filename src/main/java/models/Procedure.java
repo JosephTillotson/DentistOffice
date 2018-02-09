@@ -1,6 +1,6 @@
 package models;
 
-public class Procedure {
+public class Procedure implements Business{
     private Patient patient;
     private Provider provider;
     private String id;

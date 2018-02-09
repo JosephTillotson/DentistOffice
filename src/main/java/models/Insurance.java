@@ -2,7 +2,7 @@ package models;
 
 import java.io.InputStreamReader;
 
-public class Insurance {
+public class Insurance implements Business{
 
     private String name;
 

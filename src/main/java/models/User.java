@@ -1,7 +1,7 @@
 package models;
 
 
-public class User {
+public class User implements Business{
     private String password;
 
     private String userName;

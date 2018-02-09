@@ -1,6 +1,6 @@
 package models;
 
-public class Administrater extends User{
+public class Administrater extends User implements Business{
 
     private String password;
     @Override

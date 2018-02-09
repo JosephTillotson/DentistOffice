@@ -1,4 +1,4 @@
 package models;
 
-public class Appointment {
+public class Appointment implements Business {
 }
