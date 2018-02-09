@@ -7,10 +7,10 @@ public class Procedure {
 
     public Procedure() {}
 
-    public Procedure(Patient patient, Provider provider, String id){
+    public Procedure(String id,String name, int id2, int phonenumber, String email, String name2,int groupID,int memberID,String paymentCard, int amount){
         setId(id);
-        setPatient(patient);
-        setProvider(provider);
+        patient = new Patient(name,id2, phonenumber,email,name2,groupID,memberID, paymentCard, amount);
+        provider=new Provider();
     }
 
     public String getId() {
@@ -39,6 +39,6 @@ public class Procedure {
 
     @Override
     public String toString(){
-        return "Patient: "
+        return "Patient: "+patient.toString()+" Provider: "+provider.toString()+" ID: "+getId();
     }
 }
