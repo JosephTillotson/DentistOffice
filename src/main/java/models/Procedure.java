@@ -23,6 +23,6 @@ public class Procedure implements Business{
 
     @Override
     public String toString(){
-        return "Patient: "+patient.toString()+" Provider: "+provider.toString()+" ID: "+getId();
+        return "Patient: "+patient.toString()+" Provider: "+provider.toString()+" ID: "+this.getId();
     }
 }
