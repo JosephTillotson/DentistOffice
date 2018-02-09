@@ -1,4 +1,4 @@
 package models;
 
-public class Business {
+public interface Business {
 }
