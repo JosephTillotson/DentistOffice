@@ -36,4 +36,9 @@ public class Procedure {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
+    @Override
+    public String toString(){
+        return "Patient: "
+    }
 }
