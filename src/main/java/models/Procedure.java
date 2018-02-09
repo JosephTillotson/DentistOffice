@@ -7,10 +7,10 @@ public class Procedure {
 
     public Procedure() {}
 
-    public Procedure(String id,String name, int id2, int phonenumber, String email, String name2,int groupID,int memberID,String paymentCard, int amount){
+    public Procedure(String id,String name, int id2, int phonenumber, String email, String name2,int groupID,int memberID,String paymentCard, int amount,String title, int id3, String name3){
         setId(id);
         patient = new Patient(name,id2, phonenumber,email,name2,groupID,memberID, paymentCard, amount);
-        provider=new Provider();
+        provider=new Provider(name3,id3,title);
     }
 
     public String getId() {
