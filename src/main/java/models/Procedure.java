@@ -21,22 +21,6 @@ public class Procedure implements Business{
         this.id = id;
     }
 
-    public Provider getProvider() {
-        return provider;
-    }
-
-    public void setProvider(Provider provider) {
-        this.provider = provider;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     @Override
     public String toString(){
         return "Patient: "+patient.toString()+" Provider: "+provider.toString()+" ID: "+getId();
