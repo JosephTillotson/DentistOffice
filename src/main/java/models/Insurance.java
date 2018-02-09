@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 
 public class Insurance {
 
-    private String name;
+    private String iname;
 
     private int groupID;
 
@@ -12,17 +12,17 @@ public class Insurance {
 
     public Insurance(){}
     public Insurance(String name, int memberID, int groupID){
-        this.setName(name);
+        this.setIname(name);
         this.setMemberID(memberID);
         this.setGroupID(groupID);
     }
 
-    public String getName() {
-        return name;
+    public String getIname() {
+        return iname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIname(String iname) {
+        this.iname = iname;
     }
 
     public int getMemberID() {
@@ -47,14 +47,14 @@ public class Insurance {
     public boolean equals(Object obj) {
         Insurance insurance = (Insurance)obj;
 
-        return this.getName() == insurance.getName() &&
+        return this.getIname() == insurance.getIname() &&
                 this.getMemberID() == insurance.getMemberID() &&
                 this.getGroupID() == insurance.getGroupID();
     }
 
     @Override
     public String toString() {
-        return "Insurance Provider: " + this.getName() + ", " + "MemberID: " + this.getMemberID() +
+        return "Insurance Provider: " + this.getIname() + ", " + "MemberID: " + this.getMemberID() +
                 ", " + "GroupID: " + this.getGroupID();
     }
 }
