@@ -5,6 +5,14 @@ import java.util.Calendar;
 
 public class Appointment implements Business {
 
+    public Appointment(){}
+
+    public Appointment(ArrayList<Provider> providers, ArrayList<Procedure> procedures, Calendar date){
+        this.setProviders(providers);
+        this.setProcedures(procedures);
+        this.setDate(date);
+    }
+
     private ArrayList<Provider> providers;
 
     private Calendar date;
