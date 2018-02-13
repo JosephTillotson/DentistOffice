@@ -13,6 +13,8 @@ public class Patient extends Insurance implements Business {
 
     private int amountOwed;
 
+    private String lastName;
+
     /**
      * basic constructor for Patient
      */
@@ -177,8 +179,24 @@ public class Patient extends Insurance implements Business {
 
     @Override
     public String toString() {
-        return "Patient Name: " + this.getName() + ", " + "Patient ID: " + this.getId()
+        return "Patient Name: " + this.getName()+" "+getLastName() + ", " + "Patient ID: " + this.getId()
                 + ", " + "Patient Email: " + this.getEmail() + ", " + "Patient Payment Card: " +
                 this.getPaymentCard() + ", " + "Amount Owed: " + this.getAmountOwed() + super.toString();
+    }
+
+    /**
+     * will give you the last name of the Patient
+     * @return will return the last name of the Patient
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * will set the last name of the Patient.
+     * @param lastName
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
