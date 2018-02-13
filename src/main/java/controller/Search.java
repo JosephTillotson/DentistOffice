@@ -19,7 +19,7 @@ public class Search {
 
     }
     public ArrayList<User> searchUser(ArrayList<User> users,String firstname){
-        returnedUsers=new ArrayList<User>();
+        returnedUsers=new ArrayList<>();
         for (int i = 0; i<users.size();i++){
             if (users.get(i).getFirstName().equals(firstname)){
                 returnedUsers.add(users.get(i));
@@ -28,7 +28,7 @@ public class Search {
         return returnedUsers;
     }
     public ArrayList<User> searchUser(ArrayList<User> users, String firstname, String lastName){
-        returnedUsers=new ArrayList<User>();
+        returnedUsers=new ArrayList<>();
         for (int i = 0; i<users.size();i++){
             if (users.get(i).getFirstName().equals(firstname)){
                 if (users.get(i).getLastName().equals(lastName)) {
@@ -39,7 +39,7 @@ public class Search {
         return returnedUsers;
     }
     public ArrayList<User> searchUser(ArrayList<User> users, String firstName, String lastName,String userName){
-        returnedUsers=new ArrayList<User>();
+        returnedUsers=new ArrayList<>();
         for (int i = 0; i<users.size();i++){
             if (users.get(i).getFirstName().equals(firstName)){
                 if (users.get(i).getLastName().equals(lastName)) {
@@ -52,7 +52,7 @@ public class Search {
         return returnedUsers;
     }
     public ArrayList<Provider> searchProvider(ArrayList<Provider> providers, String firstName){
-     returnedProviders=new ArrayList<Provider>();
+     returnedProviders=new ArrayList<>();
      for (int i = 0;i<providers.size();i++){
          if (providers.get(i).getName().contains(firstName)){
              returnedProviders.add(providers.get(i));
@@ -61,7 +61,7 @@ public class Search {
      return returnedProviders;
     }
     public ArrayList<Provider> searchProvider(ArrayList<Provider> providers,String firstName, String lastName){
-        returnedProviders=new ArrayList<Provider>();
+        returnedProviders=new ArrayList<>();
         for (int i = 0;i<providers.size();i++){
             if (providers.get(i).getName().contains(firstName)){
                 if (providers.get(i).getLastName().contains(lastName)) {
@@ -72,7 +72,7 @@ public class Search {
         return returnedProviders;
     }
     public ArrayList<Provider> searchProvider(ArrayList<Provider> providers,String firstName, String lastName, String title){
-        returnedProviders=new ArrayList<Provider>();
+        returnedProviders=new ArrayList<>();
         for (int i = 0;i<providers.size();i++){
             if (providers.get(i).getName().contains(firstName)){
                 if (providers.get(i).getLastName().contains(lastName)) {
@@ -85,7 +85,7 @@ public class Search {
         return returnedProviders;
     }
     public ArrayList<Patient> searchPatient(ArrayList<Patient> patients, String firstName){
-        returnedPatients=new ArrayList<Patient>();
+        returnedPatients=new ArrayList<>();
         for (int i = 0; i<patients.size(); i++){
             if (patients.get(i).getName().contains(firstName)){
                 returnedPatients.add(patients.get(i));
@@ -94,7 +94,7 @@ public class Search {
         return returnedPatients;
     }
     public ArrayList<Patient> searchPatient(ArrayList<Patient> patients,String firstName,String lastName){
-        returnedPatients=new ArrayList<Patient>();
+        returnedPatients=new ArrayList<>();
         for (int i = 0; i<patients.size(); i++){
             if (patients.get(i).getName().contains(firstName)){
                 if (patients.get(i).getLastName().contains(lastName)){
@@ -105,7 +105,7 @@ public class Search {
         return returnedPatients;
     }
     public ArrayList<Patient> searchPatient(ArrayList<Patient> patients,String firstName, String lastName, String insuranceName){
-        returnedPatients=new ArrayList<Patient>();
+        returnedPatients=new ArrayList<>();
         for (int i = 0; i<patients.size(); i++){
             if (patients.get(i).getName().contains(firstName)){
                 if (patients.get(i).getLastName().contains(lastName)){
@@ -118,13 +118,36 @@ public class Search {
         return returnedPatients;
     }
     public ArrayList<Appointment> searchAppointment(ArrayList<Appointment> appointments, Calendar StartTime, Calendar endTime){
-
+        returnedAppointments=new ArrayList<>();
+        for (int i = 0; i < appointments.size();i++){
+            if (appointments.get(i).getDate().compareTo(StartTime)>0&&appointments.get(i).getDate().compareTo(endTime)<0){
+                returnedAppointments.add(appointments.get(i));
+            }
+        }
+        return returnedAppointments;
     }
     public ArrayList<Appointment> searchAppointment(ArrayList<Appointment> appointments,Calendar StartTime, Calendar endTime,Provider provider){
-
+        returnedAppointments=new ArrayList<>();
+        for (int i = 0; i < appointments.size();i++){
+            if (appointments.get(i).getDate().compareTo(StartTime)>0&&appointments.get(i).getDate().compareTo(endTime)<0){
+                if (appointments.get(i).getProviders().get(i).equals(provider)) {
+                    returnedAppointments.add(appointments.get(i));
+                }
+            }
+        }
+        return returnedAppointments;
     }
     public ArrayList<Appointment> searchAppointment(ArrayList<Appointment> appointments,Calendar StartTime, Calendar endTime,Provider provider, Patient patient){
-
+        returnedAppointments=new ArrayList<>();
+        for (int i = 0; i < appointments.size();i++){
+            if (appointments.get(i).getDate().compareTo(StartTime)>0&&appointments.get(i).getDate().compareTo(endTime)<0){
+                if (appointments.get(i).getProviders().get(i).equals(provider)) {
+                    if (appointments.get(i).getP)
+                    returnedAppointments.add(appointments.get(i));
+                }
+            }
+        }
+        return returnedAppointments;
     }
     public ArrayList<Appointment> searchAppointment(ArrayList<Appointment> appointments,Calendar StartTime, Calendar endTime,Provider provider, Patient patient, String code){
 

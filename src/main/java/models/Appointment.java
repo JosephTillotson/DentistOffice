@@ -15,10 +15,12 @@ public class Appointment implements Business {
      * @param procedures is the list of Procedures tat need to happen n the Appointments
      * @param date is the date of the appointment
      */
-    public Appointment(ArrayList<Provider> providers, ArrayList<Procedure> procedures, Calendar date){
+    public Appointment(ArrayList<Provider> providers, ArrayList<Procedure> procedures, Calendar date,String name, String email, String paymentCard, int id, String phoneNumber, int amountOwed,String iname, int memberID, int groupID, String lastName){
         this.setProviders(providers);
         this.setProcedures(procedures);
         this.setDate(date);
+        patient=new Patient(name, email, paymentCard, id, phoneNumber,amountOwed,iname,memberID,groupID,lastName);
+
     }
 
     private ArrayList<Provider> providers;
@@ -26,6 +28,8 @@ public class Appointment implements Business {
     private Calendar date;
 
     private ArrayList<Procedure> procedures;
+
+    private Patient patient;
 
     /**
      * will return the list of Providers
@@ -88,5 +92,21 @@ public class Appointment implements Business {
     public String toString() {
         return "Appointment Date: " + this.getDate() + ", " + "Appointment Procedures: "
                 + this.getProcedures() + ", " + "Appointment Providers: " + this.getProviders();
+    }
+
+    /**
+     * will get the patient
+     * @return the patient that is needed.
+     */
+    public Patient getPatient() {
+        return patient;
+    }
+
+    /**
+     * will set the patient
+     * @param patient the patient to be
+     */
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 }

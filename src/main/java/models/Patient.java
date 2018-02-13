@@ -32,7 +32,7 @@ public class Patient extends Insurance implements Business {
      * @param memberID patents id from the  insureance
      * @param groupID the insurance id
      */
-    public Patient(String name, String email, String paymentCard, int id, String phoneNumber, int amountOwed,String iname, int memberID, int groupID ){
+    public Patient(String name, String email, String paymentCard, int id, String phoneNumber, int amountOwed,String iname, int memberID, int groupID, String lastName){
         super(iname,memberID,groupID);
         this.setName(name);
         this.setEmail(email);
@@ -40,6 +40,7 @@ public class Patient extends Insurance implements Business {
         this.setId(id);
         this.setPhoneNumber(phoneNumber);
         this.setAmountOwed(amountOwed);
+        setLastName(lastName);
 
     }
 
