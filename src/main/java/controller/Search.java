@@ -15,9 +15,7 @@ public class Search {
 
     private ArrayList<Appointment> returnedAppointments;
 
-    public Business searchAmount(int min, int max){
 
-    }
     public ArrayList<User> searchUser(ArrayList<User> users,String firstname){
         returnedUsers=new ArrayList<>();
         for (int i = 0; i<users.size();i++){
@@ -130,8 +128,10 @@ public class Search {
         returnedAppointments=new ArrayList<>();
         for (int i = 0; i < appointments.size();i++){
             if (appointments.get(i).getDate().compareTo(StartTime)>0&&appointments.get(i).getDate().compareTo(endTime)<0){
-                if (appointments.get(i).getProviders().get(i).equals(provider)) {
-                    returnedAppointments.add(appointments.get(i));
+                for (int t= 0; t<appointments.get(i).getProviders().size();t++) {
+                    if (appointments.get(i).getProviders().get(t).equals(provider)) {
+                       returnedAppointments.add(appointments.get(i));
+                    }
                 }
             }
         }
@@ -141,16 +141,35 @@ public class Search {
         returnedAppointments=new ArrayList<>();
         for (int i = 0; i < appointments.size();i++){
             if (appointments.get(i).getDate().compareTo(StartTime)>0&&appointments.get(i).getDate().compareTo(endTime)<0){
-                if (appointments.get(i).getProviders().get(i).equals(provider)) {
-                    if (appointments.get(i).getP)
-                    returnedAppointments.add(appointments.get(i));
+                for (int t= 0; t<appointments.get(i).getProviders().size();t++) {
+                    if (appointments.get(i).getProviders().get(t).equals(provider)) {
+                        if (appointments.get(i).getPatient().equals(patient)) {
+                                    returnedAppointments.add(appointments.get(i));
+                        }
+                    }
                 }
             }
         }
         return returnedAppointments;
     }
     public ArrayList<Appointment> searchAppointment(ArrayList<Appointment> appointments,Calendar StartTime, Calendar endTime,Provider provider, Patient patient, String code){
-
+        returnedAppointments=new ArrayList<>();
+        for (int i = 0; i < appointments.size();i++){
+            if (appointments.get(i).getDate().compareTo(StartTime)>0&&appointments.get(i).getDate().compareTo(endTime)<0){
+                for (int t= 0; t<appointments.get(i).getProviders().size();t++) {
+                    if (appointments.get(i).getProviders().get(t).equals(provider)) {
+                        if (appointments.get(i).getPatient().equals(patient)) {
+                            for (int v = 0; v < appointments.get(i).getProcedures().size(); v++) {
+                                if (appointments.get(i).getProcedures().get(v).getId().contains(code)) {
+                                    returnedAppointments.add(appointments.get(i));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return returnedAppointments;
     }
 
 }
