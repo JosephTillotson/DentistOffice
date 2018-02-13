@@ -2,6 +2,10 @@ package models;
 
 
 public class User implements Business{
+    private String firstName;
+
+    private String lastName;
+
     private String password;
 
     private String userName;
@@ -69,5 +73,37 @@ public class User implements Business{
     public boolean equals(Object obj){
         User other=(User)obj;
         return this.getPassword().equals(other.getPassword())&&this.getUserName().equals(other.getUserName());
+    }
+
+    /**
+     * will return the last name
+     * @return will return the last name
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * will set the last name
+     * @param lastName the last name to be
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * the first name will be returned
+     * @return return the first name
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * will set the first name of the user
+     * @param firstName the furst name to be.
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 }
