@@ -55,7 +55,7 @@ public class Patient extends Insurance implements Business {
      */
     public void setPhoneNumber(String phoneNumber) {
         if (phoneNumber.contains("1000000000")||phoneNumber.contains("9999999999")){
-            throw new IllegalArgumentException("pick a leagal phone number");
+            throw new IllegalArgumentException("pick a legal phone number");
         }else if (phoneNumber.contains("a")||phoneNumber.contains("b")||phoneNumber.contains("c")||phoneNumber.contains("d")||
                 phoneNumber.contains("e")||phoneNumber.contains("f")||phoneNumber.contains("g")||phoneNumber.contains("h")||
                 phoneNumber.contains("i")||phoneNumber.contains("j")||phoneNumber.contains("k")||phoneNumber.contains("l")||
