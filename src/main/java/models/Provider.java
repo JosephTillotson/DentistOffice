@@ -7,6 +7,8 @@ public class Provider implements Business{
 
     private String title;
 
+    private String lastName;
+
     /**
      * basic constrctor for Provider
      */
@@ -96,6 +98,22 @@ public class Provider implements Business{
     public String toString() {
         return "Provider Name: " + this.getName() + ", " + "ID: " + this.getId() + ", "
                 + "Job Title: " + this.getTitle();
+    }
+
+    /**
+     * will return the last name of the user
+     * @return the last name of the Provider
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * this will set the last name of the  users
+     * @param lastName the last name to be.
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
 
