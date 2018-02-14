@@ -64,10 +64,25 @@ public class Controller extends Search {
 
     private ArrayList<Procedure> procedures;
 
-    public void mainMenu() throws IOException {
-        boolean Exit = false;
 
-        while (!Exit) {
+    public void run() throws IOException {
+        boolean ye = true;
+        String Login;
+        System.out.println("Welcome Administrator, Please Log in");
+        while(ye) {
+            Login = br.readLine();
+            if (Login.equals("1234Password")) {
+                mainMenu();
+                ye = false;
+            } else
+                System.out.println("Invalid Password, Please try Again");
+        }
+    }
+
+    public void mainMenu() throws IOException, NullPointerException {
+        boolean Exit = true;
+
+        while (Exit) {
             int menuChoice = this.ui.printMenu(menuOptions());
             switch (menuChoice) {
                 case ADD_USER:
@@ -95,7 +110,7 @@ public class Controller extends Search {
                     break;
                 case EXIT:
                     Save();
-                    Exit = true;
+                    Exit = false;
 
             }
         }
