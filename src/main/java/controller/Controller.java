@@ -237,7 +237,7 @@ public class Controller extends Search {
                 case SEARCH_BY_FIRST_LAST_INSURANCE_NAME:
                     searchPatient(patients, newPatient.getName(), newPatient.getLastName(), newPatient.getIname());
                     break;
-                case RETURN_TO_SEARCH_MENU:
+                //case RETURN_TO_SEARCH_MENU:
                     searchMenu();
                     break;
                 case RETURN_TO_MAIN_MENU:
