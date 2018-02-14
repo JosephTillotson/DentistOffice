@@ -51,18 +51,18 @@ public class Controller extends Search {
     Appointment newAppointment = new Appointment();
     Provider newProvider = new Provider();
     Procedure newProcedure = new Procedure();
-    int Userchoice;
+    String Userchoice;
 
 
-    private ArrayList<Patient> patients;
+    private ArrayList<Patient> patients = new ArrayList<>();
 
-    private ArrayList<User> users;
+    private ArrayList<User> users = new ArrayList<>();
 
-    private ArrayList<Appointment> appointments;
+    private ArrayList<Appointment> appointments = new ArrayList<>();
 
-    private ArrayList<Provider> providers;
+    private ArrayList<Provider> providers = new ArrayList<>();
 
-    private ArrayList<Procedure> procedures;
+    private ArrayList<Procedure> procedures = new ArrayList<>();
 
 
     public void run() throws IOException {
@@ -237,6 +237,9 @@ public class Controller extends Search {
                 case SEARCH_BY_FIRST_LAST_INSURANCE_NAME:
                     searchPatient(patients, newPatient.getName(), newPatient.getLastName(), newPatient.getIname());
                     break;
+                case RETURN_TO_SEARCH_MENU:
+                    searchMenu();
+                    break;
                 case RETURN_TO_MAIN_MENU:
                     mainMenu();
                     break;
@@ -258,10 +261,10 @@ public class Controller extends Search {
             user.setPassword(br.readLine());
             users.add(user);
             System.out.println("Would you like to add another user? type 1 for yes, type 2 for no");
-            Userchoice = br.read();
-            if (Userchoice == 1) {
+            Userchoice = br.readLine();
+            if (Userchoice.equals("1")) {
                 nah = true;
-            } else if (Userchoice == 2) {
+            } else if (Userchoice.equals("2")) {
                 nah = false;
             } else
                 System.out.println("Invalid Input, Please Try Again.");
@@ -308,10 +311,10 @@ appointment.setProviders(providers);
             }
             patients.add(newPatient);
             System.out.println("Would you Like to add another Patient? type 1 for yes and 2 for no");
-            Userchoice = br.read();
-            if (Userchoice == 1) {
+            Userchoice = br.readLine();
+            if (Userchoice.equals("1")) {
                 meh = true;
-            } else if (Userchoice == 2) {
+            } else if (Userchoice.equals("2")) {
                 meh = false;
             } else
                 System.out.println("Invalid Input, Please try again");
@@ -342,10 +345,10 @@ appointment.setProviders(providers);
             providers.add(provider);
 
             System.out.println("Would you like to add another provider? type 1 for yes, type 2 for no");
-            Userchoice = br.read();
-            if (Userchoice == 1) {
+            Userchoice = br.readLine();
+            if (Userchoice.equals("1")) {
                 nyeh = true;
-            } else if (Userchoice == 2) {
+            } else if (Userchoice.equals("2")) {
                 nyeh = false;
             } else
                 System.out.println("Invalid Input, please try again");
