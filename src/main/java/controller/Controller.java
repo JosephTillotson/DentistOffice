@@ -279,6 +279,7 @@ appointment.setProviders(providers);
     }
 
     public void addPatient(Patient patient) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         boolean meh = true;
         boolean thing = true;
         while (meh) {
@@ -290,10 +291,12 @@ appointment.setProviders(providers);
             patient.setPaymentCard(br.readLine());
             System.out.println("Enter the Patients Phonenumber");
             patient.setPhoneNumber(br.readLine());
-            System.out.println("Enter the Patients ID");
-            patient.setId(br.read());
             System.out.println("Enter the patients Insurance Name");
             patient.setIname(br.readLine());
+            System.out.println("Enter the amount owed by the Patient");
+            patient.setAmountOwed(br.read());
+            System.out.println("Enter the Patients ID");
+            patient.setId(br.read());
             System.out.println("Enter the patients Insurance ID");
             patient.setMemberID(br.read());
             System.out.println("Enter the Insurance ID");
@@ -325,7 +328,8 @@ appointment.setProviders(providers);
     }
 
     public void addProvider(Provider provider) throws IOException {
-        int choiceUser;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String choiceUser;
         boolean nyeh = true;
         while (nyeh) {
             System.out.println("Enter the first name");
@@ -335,12 +339,12 @@ appointment.setProviders(providers);
             System.out.println("Enter the ID");
             provider.setId(br.read());
             System.out.println("Enter the position title, Type 1 for a Dentist, Type 2 for a Dental Assistant, Type 3 for Hygenist");
-            choiceUser = br.read();
-            if (choiceUser == 1) {
+            choiceUser = br.readLine();
+            if (choiceUser.equals("1")) {
                 provider.setTitle("Dentist");
-            } else if (choiceUser == 2) {
+            } else if (choiceUser.equals("2")) {
                 provider.setTitle("Dental Assistant");
-            } else if (choiceUser == 3) {
+            } else if (choiceUser.equals("3")) {
                 provider.setTitle("Hygenist");
             } else
                 System.out.println("Invalid Input, Please try again.");
