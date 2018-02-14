@@ -44,7 +44,7 @@ public class Controller extends Search {
     private static final int SEARCH_FOR_APPOINTMENT = 3;
 
 
-    private textUI ui;
+    private textUI ui = new textUI();
 
     User newUser = new User();
     Patient newPatient = new Patient();
