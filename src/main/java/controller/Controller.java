@@ -4,6 +4,7 @@ import models.*;
 import view.textUI;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +19,10 @@ public class Controller extends Search {
     private static final int ADD_PATIENT = 1;
     private static final int ADD_PROVIDER = 2;
     private static final int ADD_APPOINTMENT = 3;
-    private static final int SEARCH_FOR= 4;
-    private static final int RECORD_PAYMENT_FROM_INSURANCE = 5;
-    private static final int RECORD_PAYMENT_FROM_PATIENT = 6;
+    private static final int ADD_PROCEDURE = 4;
+    private static final int SEARCH_FOR = 5;
+    private static final int RECORD_PAYMENT_FROM_INSURANCE = 6;
+    private static final int RECORD_PAYMENT_FROM_PATIENT = 7;
     private static final int EXIT = 8;
 
     private static final int SEARCH_BY_FIRST_NAME = 0;
@@ -30,6 +32,11 @@ public class Controller extends Search {
     private static final int SEARCH_BY_FIRST_LAST_INSURANCE_NAME = 2;
     private static final int RETURN_TO_SEARCH_MENU = 7;
     private static final int RETURN_TO_MAIN_MENU = 8;
+
+    private static final int SEARCH_BY_DATE = 0;
+    private static final int SEARCH_BY_DATE_PROV = 1;
+    private static final int SEARCH_BY_DATE_PROV_PAT = 2;
+    private static final int SEARCH_BY_DATE_PROV_PAT_CODE = 3;
 
     private static final int SEARCH_FOR_USER = 0;
     private static final int SEARCH_FOR_PATIENT = 1;
@@ -43,6 +50,7 @@ public class Controller extends Search {
     Patient newPatient = new Patient();
     Appointment newAppointment = new Appointment();
     Provider newProvider = new Provider();
+    Procedure newProcedure = new Procedure();
     int Userchoice;
 
 
@@ -54,12 +62,14 @@ public class Controller extends Search {
 
     private ArrayList<Provider> providers;
 
-    public void mainMenu() throws IOException{
+    private ArrayList<Procedure> procedures;
+
+    public void mainMenu() throws IOException {
         boolean Exit = false;
 
-        while(!Exit){
+        while (!Exit) {
             int menuChoice = this.ui.printMenu(menuOptions());
-            switch (menuChoice){
+            switch (menuChoice) {
                 case ADD_USER:
                     addUser(newUser);
                     break;
@@ -72,6 +82,8 @@ public class Controller extends Search {
                 case ADD_APPOINTMENT:
                     addAppointment(newAppointment);
                     break;
+                case ADD_PROCEDURE:
+                    addProcedure(newProcedure);
                 case SEARCH_FOR:
                     searchMenu();
                     break;
@@ -95,9 +107,9 @@ public class Controller extends Search {
     public void searchMenu() throws IOException {
         boolean exit = false;
 
-        while(!exit){
+        while (!exit) {
             int menuChoice = this.ui.printMenu(searchOptions());
-            switch (menuChoice){
+            switch (menuChoice) {
                 case SEARCH_FOR_USER:
                     Usermenu();
                     break;
@@ -119,24 +131,44 @@ public class Controller extends Search {
     }
 
 
-    private void appointmentMenu() {
+    private void appointmentMenu() throws IOException {
+
+        boolean Exit = false;
+
+        while (!Exit) {
+            int menuChoice = this.ui.printMenu(appointmentSearchOptions());
+            switch (menuChoice) {
+                case SEARCH_BY_DATE:
+                    break;
+                case SEARCH_BY_DATE_PROV:
+                    break;
+                case SEARCH_BY_DATE_PROV_PAT:
+                    break;
+                case SEARCH_BY_DATE_PROV_PAT_CODE:
+                    break;
+                case RETURN_TO_SEARCH_MENU:
+                    break;
+                case RETURN_TO_MAIN_MENU:
+                    break;
+            }
+        }
 
     }
 
     private void providerMenu() throws IOException {
         boolean Exit = false;
 
-        while(!Exit){
+        while (!Exit) {
             int menuChoice = this.ui.printMenu(providerSearchOptions());
-            switch (menuChoice){
+            switch (menuChoice) {
                 case SEARCH_BY_FIRST_NAME:
                     searchProvider(providers, newProvider.getName());
                     break;
                 case SEARCH_BY_FIRST_LAST_NAME:
-                    searchProvider(providers, newProvider.getName(),newProvider.getLastName());
+                    searchProvider(providers, newProvider.getName(), newProvider.getLastName());
                     break;
                 case SEARCH_BY_FIRST_LAST_TITLE:
-                    searchProvider(providers,newProvider.getName(),newProvider.getLastName(),newProvider.getTitle());
+                    searchProvider(providers, newProvider.getName(), newProvider.getLastName(), newProvider.getTitle());
                     break;
                 case RETURN_TO_SEARCH_MENU:
                     searchMenu();
@@ -152,17 +184,17 @@ public class Controller extends Search {
     private void Usermenu() throws IOException {
         boolean Exit = false;
 
-        while(!Exit){
+        while (!Exit) {
             int menuChoice = this.ui.printMenu(userSearchOptions());
-            switch (menuChoice){
+            switch (menuChoice) {
                 case SEARCH_BY_FIRST_NAME:
                     searchUser(users, newUser.getFirstName());
                     break;
                 case SEARCH_BY_FIRST_LAST_NAME:
-                    searchUser(users, newUser.getFirstName(),newUser.getLastName());
+                    searchUser(users, newUser.getFirstName(), newUser.getLastName());
                     break;
                 case SEARCH_BY_FIRST_LAST_INSURANCE_NAME:
-                    searchUser(users,newUser.getFirstName(),newUser.getLastName(),newUser.getUserName());
+                    searchUser(users, newUser.getFirstName(), newUser.getLastName(), newUser.getUserName());
                     break;
                 case RETURN_TO_SEARCH_MENU:
                     searchMenu();
@@ -175,20 +207,20 @@ public class Controller extends Search {
     }
 
 
-    public void patientMenu() throws  IOException{
+    public void patientMenu() throws IOException {
         boolean Exit = false;
 
-        while(!Exit){
+        while (!Exit) {
             int patientChoice = this.ui.printMenu(patientOptions());
-            switch (patientChoice){
+            switch (patientChoice) {
                 case SEARCH_BY_FIRST_NAME:
                     searchPatient(patients, newPatient.getName());
                     break;
                 case SEARCH_BY_FIRST_LAST_NAME:
-                    searchPatient(patients, newPatient.getName(),newPatient.getLastName());
+                    searchPatient(patients, newPatient.getName(), newPatient.getLastName());
                     break;
                 case SEARCH_BY_FIRST_LAST_INSURANCE_NAME:
-                    searchPatient(patients,newPatient.getName(),newPatient.getLastName(),newPatient.getIname());
+                    searchPatient(patients, newPatient.getName(), newPatient.getLastName(), newPatient.getIname());
                     break;
                 case RETURN_TO_MAIN_MENU:
                     mainMenu();
@@ -212,18 +244,18 @@ public class Controller extends Search {
             users.add(user);
             System.out.println("Would you like to add another user? type 1 for yes, type 2 for no");
             Userchoice = br.read();
-            if(Userchoice == 1){
+            if (Userchoice == 1) {
                 nah = true;
-            }
-            else if(Userchoice == 2){
+            } else if (Userchoice == 2) {
                 nah = false;
-            }
-            else
+            } else
                 System.out.println("Invalid Input, Please Try Again.");
         }
     }
-    public void addAppointment(Appointment appointment){
 
+    public void addAppointment(Appointment appointment) {
+appointment.setPatient(newPatient);
+appointment.setProviders(providers);
 
     }
 
@@ -262,13 +294,11 @@ public class Controller extends Search {
             patients.add(newPatient);
             System.out.println("Would you Like to add another Patient? type 1 for yes and 2 for no");
             Userchoice = br.read();
-            if (Userchoice == 1){
+            if (Userchoice == 1) {
                 meh = true;
-            }
-            else if(Userchoice == 2){
+            } else if (Userchoice == 2) {
                 meh = false;
-            }
-            else
+            } else
                 System.out.println("Invalid Input, Please try again");
 
         }
@@ -286,29 +316,39 @@ public class Controller extends Search {
             provider.setId(br.read());
             System.out.println("Enter the position title, Type 1 for a Dentist, Type 2 for a Dental Assistant, Type 3 for Hygenist");
             choiceUser = br.read();
-            if(choiceUser == 1){
+            if (choiceUser == 1) {
                 provider.setTitle("Dentist");
-            }
-            else if(choiceUser == 2){
+            } else if (choiceUser == 2) {
                 provider.setTitle("Dental Assistant");
-            }
-            else if(choiceUser == 3){
+            } else if (choiceUser == 3) {
                 provider.setTitle("Hygenist");
-            }
-            else
+            } else
                 System.out.println("Invalid Input, Please try again.");
             providers.add(provider);
 
             System.out.println("Would you like to add another provider? type 1 for yes, type 2 for no");
             Userchoice = br.read();
-            if(Userchoice == 1){
+            if (Userchoice == 1) {
                 nyeh = true;
-            }
-            else if(Userchoice == 2){
+            } else if (Userchoice == 2) {
                 nyeh = false;
-            }
-            else
+            } else
                 System.out.println("Invalid Input, please try again");
+        }
+    }
+    public void addProcedure(Procedure procedure) throws IOException {
+        boolean m = true;
+        System.out.println("Enter the Name of the Procedure");
+        procedure.setName(br.readLine());
+        while (m) {
+            System.out.println("Enter the Procedure ID, it Must start with D.");
+            procedure.setId(br.readLine());
+            if (procedure.getId().startsWith("D")) {
+                m = false;
+            } else
+                System.out.println("Invalid Procedure Code, please try again.");
+
+
         }
     }
 
@@ -322,78 +362,80 @@ public class Controller extends Search {
         newPatient.setInsurancePayment(br.read());
     }
 
-    public void Save() throws FileNotFoundException{
-        try{
-            try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DentistData.Dat"))){
-                try{
+    public void Save() throws FileNotFoundException {
+        try {
+            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DentistData.Dat"))) {
+                try {
                     for (int i = 0; i < patients.size(); i++) {
                         out.writeObject(this.patients.get(i));
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-                try{
+                try {
                     for (int i = 0; i < users.size(); i++) {
                         out.writeObject(this.users.get(i));
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-                try{
+                try {
                     for (int i = 0; i < appointments.size(); i++) {
                         out.writeObject(this.appointments.get(i));
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
             }
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    public void Load(){
-        try{
-            try(ObjectOutputStream in = new ObjectOutputStream(new FileOutputStream("DentistData.Dat"))){
-                try{
+    public void Load() {
+        try {
+            try (ObjectOutputStream in = new ObjectOutputStream(new FileOutputStream("DentistData.Dat"))) {
+                try {
                     for (int i = 0; i < patients.size(); i++) {
                         in.writeObject(this.patients.get(i));
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-                try{
+                try {
                     for (int i = 0; i < users.size(); i++) {
                         in.writeObject(this.users.get(i));
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-                try{
+                try {
                     for (int i = 0; i < appointments.size(); i++) {
                         in.writeObject(this.appointments.get(i));
                     }
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
             }
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
 
     }
-    private Map<Integer,String> menuOptions() {
+
+    private Map<Integer, String> menuOptions() {
         Map<Integer, String> menu = new HashMap<>();
         menu.put(ADD_USER, "Add User");
         menu.put(ADD_PATIENT, "Add Patient");
         menu.put(ADD_APPOINTMENT, "Add Appointment");
         menu.put(ADD_PROVIDER, "Add Provider");
+        menu.put(ADD_PROCEDURE, "Add Procedure");
         menu.put(SEARCH_FOR, "Search For:");
         menu.put(RECORD_PAYMENT_FROM_INSURANCE, "Record Payment From Insurance");
         menu.put(RECORD_PAYMENT_FROM_PATIENT, "Record Payment From Patient");
@@ -401,7 +443,8 @@ public class Controller extends Search {
         return menu;
 
     }
-    private Map<Integer,String> patientOptions() {
+
+    private Map<Integer, String> patientOptions() {
         Map<Integer, String> menu = new HashMap<>();
         menu.put(SEARCH_BY_FIRST_NAME, "Search by first name");
         menu.put(SEARCH_BY_FIRST_LAST_NAME, "Search by first and last name");
@@ -410,7 +453,8 @@ public class Controller extends Search {
         return menu;
 
     }
-    private Map<Integer,String> searchOptions() {
+
+    private Map<Integer, String> searchOptions() {
         Map<Integer, String> menu = new HashMap<>();
         menu.put(SEARCH_FOR_USER, "Search for User");
         menu.put(SEARCH_FOR_PATIENT, "Search for Patient");
@@ -422,7 +466,7 @@ public class Controller extends Search {
 
     }
 
-    private Map<Integer,String> userSearchOptions() {
+    private Map<Integer, String> userSearchOptions() {
         Map<Integer, String> menu = new HashMap<>();
         menu.put(SEARCH_BY_FIRST_NAME, "Search by first name");
         menu.put(SEARCH_BY_FIRST_LAST_NAME, "Search by first and last name");
@@ -433,7 +477,8 @@ public class Controller extends Search {
         return menu;
 
     }
-    private Map<Integer,String> providerSearchOptions() {
+
+    private Map<Integer, String> providerSearchOptions() {
         Map<Integer, String> menu = new HashMap<>();
         menu.put(SEARCH_BY_FIRST_NAME, "Search by first name");
         menu.put(SEARCH_BY_FIRST_LAST_NAME, "Search by first and last name");
@@ -445,4 +490,17 @@ public class Controller extends Search {
 
     }
 
+    private Map<Integer, String> appointmentSearchOptions() {
+        Map<Integer, String> menu = new HashMap<>();
+        menu.put(SEARCH_BY_DATE, "Search by Date");
+        menu.put(SEARCH_BY_DATE_PROV, "Search by Date and Provider");
+        menu.put(SEARCH_BY_DATE_PROV_PAT, "Search by Date, Provider, and Patient");
+        menu.put(SEARCH_BY_DATE_PROV_PAT_CODE, "Search by Date, Provider, Patient, and Procedure Code");
+        menu.put(RETURN_TO_SEARCH_MENU, "Return to Search Menu");
+        menu.put(RETURN_TO_MAIN_MENU, "Return to Main Menu");
+
+        return menu;
+
+
+    }
 }
