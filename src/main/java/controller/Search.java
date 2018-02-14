@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Search {
-    private ArrayList<User> returnedUsers;
+    public ArrayList<User> returnedUsers;
 
-    private ArrayList<Provider> returnedProviders;
+    public ArrayList<Provider> returnedProviders;
 
-    private ArrayList<Patient> returnedPatients;
+    public ArrayList<Patient> returnedPatients;
 
-    private ArrayList<Appointment> returnedAppointments;
+    public ArrayList<Appointment> returnedAppointments;
 
     /**
      * will search for the user based on first name

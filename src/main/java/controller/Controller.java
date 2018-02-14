@@ -260,6 +260,7 @@ public class Controller extends Search {
             System.out.println("Enter the Password");
             user.setPassword(br.readLine());
             users.add(user);
+            returnedUsers.add(user);
             System.out.println("Would you like to add another user? type 1 for yes, type 2 for no");
             Userchoice = br.readLine();
             if (Userchoice.equals("1")) {
@@ -310,6 +311,7 @@ appointment.setProviders(providers);
 
             }
             patients.add(newPatient);
+            returnedPatients.add(newPatient);
             System.out.println("Would you Like to add another Patient? type 1 for yes and 2 for no");
             Userchoice = br.readLine();
             if (Userchoice.equals("1")) {
@@ -343,6 +345,7 @@ appointment.setProviders(providers);
             } else
                 System.out.println("Invalid Input, Please try again.");
             providers.add(provider);
+            returnedProviders.add(provider);
 
             System.out.println("Would you like to add another provider? type 1 for yes, type 2 for no");
             Userchoice = br.readLine();
