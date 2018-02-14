@@ -10,11 +10,14 @@ public class Insurance implements Business{
 
     private int memberID;
 
+    private int insurancePayment;
+
     public Insurance(){}
-    public Insurance(String name, int memberID, int groupID){
+    public Insurance(String name, int memberID, int groupID, int insurancePayment){
         this.setIname(name);
         this.setMemberID(memberID);
         this.setGroupID(groupID);
+        this.setInsurancePayment(insurancePayment);
     }
 
     public String getIname() {
@@ -41,6 +44,14 @@ public class Insurance implements Business{
 
     public void setGroupID(int groupID) {
         this.groupID = groupID;
+    }
+
+    public int getInsurancePayment() {
+        return insurancePayment;
+    }
+
+    public void setInsurancePayment(int insurancePayment) {
+        this.insurancePayment = insurancePayment;
     }
 
     @Override

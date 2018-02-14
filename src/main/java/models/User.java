@@ -20,9 +20,11 @@ public class User implements Business{
      * @param password Password to be of the user
      * @param userName Username of the user
      */
-    public User(String password, String userName){
+    public User(String password, String userName, String firstName, String lastName){
         this.setPassword(password);
         this.setUserName(userName);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
     }
 
     /**

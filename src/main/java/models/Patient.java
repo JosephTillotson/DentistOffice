@@ -15,6 +15,8 @@ public class Patient extends Insurance implements Business {
 
     private String lastName;
 
+    private int patientPayment;
+
     /**
      * basic constructor for Patient
      */
@@ -32,19 +34,29 @@ public class Patient extends Insurance implements Business {
      * @param memberID patents id from the  insureance
      * @param groupID the insurance id
      */
-    public Patient(String name, String email, String paymentCard, int id, String phoneNumber, int amountOwed,String iname, int memberID, int groupID, String lastName){
-        super(iname,memberID,groupID);
+    public Patient(String name, String email, String paymentCard, int id, String phoneNumber, int amountOwed,int patientPayment,String iname, int memberID, int groupID,int insurancepayment, String lastName){
+        super(iname,memberID,groupID,insurancepayment);
         this.setName(name);
         this.setEmail(email);
         this.setPaymentCard(paymentCard);
         this.setId(id);
         this.setPhoneNumber(phoneNumber);
         this.setAmountOwed(amountOwed);
-        setLastName(lastName);
+        this.setLastName(lastName);
+        this.setPatientPayment(patientPayment);
 
     }
 
+    public int getPatientPayment() {
+        return patientPayment;
+    }
+
+    public void setPatientPayment(int patientPayment) {
+        this.patientPayment = patientPayment;
+    }
+
     /**
+
      * will get the phone number of the patent
      * @return
      */

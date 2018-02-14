@@ -20,10 +20,11 @@ public class Provider implements Business{
      * @param title title of the Provider
      * @param id id of the Provider.
      */
-    public Provider(String name, String title, int id){
+    public Provider(String name, String title, int id, String lastName){
         this.setName(name);
         this.setId(id);
         this.setTitle(title);
+        this.setLastName(lastName);
     }
 
     /**

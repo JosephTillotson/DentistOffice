@@ -41,7 +41,7 @@ public class Search {
         for (int i = 0; i<users.size();i++){
             if (users.get(i).getFirstName().equals(firstName)){
                 if (users.get(i).getLastName().equals(lastName)) {
-                    if (users.get(i).getUserName().equals(lastName)) {
+                    if (users.get(i).getUserName().equals(userName)) {
                         returnedUsers.add(users.get(i));
                     }
                 }

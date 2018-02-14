@@ -15,11 +15,11 @@ public class Appointment implements Business {
      * @param procedures is the list of Procedures tat need to happen n the Appointments
      * @param date is the date of the appointment
      */
-    public Appointment(ArrayList<Provider> providers, ArrayList<Procedure> procedures, Calendar date,String name, String email, String paymentCard, int id, String phoneNumber, int amountOwed,String iname, int memberID, int groupID, String lastName){
+    public Appointment(ArrayList<Provider> providers, ArrayList<Procedure> procedures, Calendar date, Patient patient){
         this.setProviders(providers);
         this.setProcedures(procedures);
         this.setDate(date);
-        patient=new Patient(name, email, paymentCard, id, phoneNumber,amountOwed,iname,memberID,groupID,lastName);
+
 
     }
 
