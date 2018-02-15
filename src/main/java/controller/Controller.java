@@ -72,13 +72,14 @@ public class Controller extends Search {
         while(ye) {
             Login = br.readLine();
             if (Login.equals("1234Password")) {
+                System.out.println("Welcome User: Administrator.");
                 mainMenu();
                 ye = false;
             } else
                 System.out.println("Invalid Password, Please try Again");
         }
 
-        System.out.println("Welcome User: Administrator.");
+
     }
 
     public void mainMenu() throws IOException, NullPointerException {
