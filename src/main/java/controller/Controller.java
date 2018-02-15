@@ -68,7 +68,7 @@ public class Controller extends Search {
     public void run() throws IOException {
         boolean ye = true;
         String Login;
-        System.out.println("Welcome Administrator, Please Log in");
+        System.out.println("Please Log in");
         while(ye) {
             Login = br.readLine();
             if (Login.equals("1234Password")) {
@@ -77,6 +77,8 @@ public class Controller extends Search {
             } else
                 System.out.println("Invalid Password, Please try Again");
         }
+
+        System.out.println("Welcome User: Administrator.");
     }
 
     public void mainMenu() throws IOException, NullPointerException {
