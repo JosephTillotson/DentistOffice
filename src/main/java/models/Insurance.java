@@ -1,8 +1,9 @@
 package models;
 
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
-public class Insurance implements Business{
+public class Insurance implements Business, Serializable{
 
     private String iname;
 
