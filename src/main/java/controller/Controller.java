@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 
-public class Controller extends Search {
+public class Controller extends Search  implements Serializable {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -68,11 +68,12 @@ public class Controller extends Search {
     public void run() throws IOException {
         boolean ye = true;
         String Login;
+        Load();
         System.out.println("Please Log in");
         while(ye) {
             Login = br.readLine();
             if (Login.equals("1234Password")) {
-                System.out.println("Welcome User: Administrator.");
+                System.out.println("Welcome User: Administrator");
                 mainMenu();
                 ye = false;
             } else
@@ -372,6 +373,7 @@ appointment.setProviders(providers);
             System.out.println("Enter the Procedure ID, it Must start with D.");
             procedure.setId(br.readLine());
             if (procedure.getId().startsWith("D")) {
+                procedures.add(procedure);
                 m = false;
             } else
                 System.out.println("Invalid Procedure Code, please try again.");
@@ -392,7 +394,7 @@ appointment.setProviders(providers);
 
     public void Save() throws FileNotFoundException {
         try {
-            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DentistData.Dat"))) {
+            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DentistData.txt"))) {
                 try {
                     for (int i = 0; i < patients.size(); i++) {
                         out.writeObject(this.patients.get(i));
@@ -425,7 +427,7 @@ appointment.setProviders(providers);
 
     public void Load() {
         try {
-            try (ObjectOutputStream in = new ObjectOutputStream(new FileOutputStream("DentistData.Dat"))) {
+            try (ObjectOutputStream in = new ObjectOutputStream(new FileOutputStream("DentistData.txt"))) {
                 try {
                     for (int i = 0; i < patients.size(); i++) {
                         in.writeObject(this.patients.get(i));

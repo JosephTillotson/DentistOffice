@@ -1,6 +1,8 @@
 package models;
 
-public class Provider implements Business{
+import java.io.Serializable;
+
+public class Provider implements Business, Serializable{
     private String name;
 
     private int id;

@@ -1,6 +1,8 @@
 package models;
 
-public class Patient extends Insurance implements Business {
+import java.io.Serializable;
+
+public class Patient extends Insurance implements Business, Serializable {
     private String name;
 
     private int id;

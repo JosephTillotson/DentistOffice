@@ -1,6 +1,8 @@
 package models;
 
-public class Procedure implements Business{
+import java.io.Serializable;
+
+public class Procedure implements Business, Serializable{
     private Patient patient;
     private Provider provider;
     private String id;
